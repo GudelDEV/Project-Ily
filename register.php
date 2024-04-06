@@ -154,7 +154,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // Menyimpan nilai variabel ke dalam sesi
+        // Menyimpan nilai variabel ke dalam sesi 
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;             
         $_SESSION['username'] = $username;

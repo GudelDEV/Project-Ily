@@ -8,8 +8,9 @@
 
     // data Admin agar tidak perlu bulak balik karena sesion telah berakhir
     $adminName = 'Admin';
-    $adminPass = '123456';
     $adminEmail = 'admin@gmail.com';
+    $adminPass = '12345678';
+    
     // inputan user di masukan ke dalam variable
     $input_username = $_GET['username'];
     $input_email = $_GET['email'];
@@ -25,13 +26,13 @@
         echo "<h1>Berhasil login </h1>";
         // echo "<button onclick=\"sesiUlang();\">Lanjut Ke dashboard</button>";
         if($remember == 'Y'){
-            setcookie('username' ,$username , time() + 86000 , "/");
-            setcookie('email' ,$email , time() + 86000 , "/");
-            setcookie('password' ,$password , time() + 86000 , "/");
+            setcookie('username' ,$adminName , time() + 86000 , "/");
+            setcookie('email' ,$adminEmail , time() + 86000 , "/");
+            setcookie('password' ,$adminPass , time() + 86000 , "/");
         }
     
         session_start(); // Mulai pemberian sesion kembali
-        $_SESSION['nama'] = $username; // sesion nama di isi dari variable usernama
+        $_SESSION['nama'] = $adminName; // sesion nama di isi dari variable usernama
          $_SESSION['login'] = 'login'; // sesion login di isi dengan nilai login untuk pengecekan
 
          header('location: starter.php');

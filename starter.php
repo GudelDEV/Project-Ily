@@ -338,7 +338,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="logout.php" type="button" class="btn btn-primary">Understood</a>
+                    <a href="logout.php" type="button" class="btn btn-primary">Confirm</a>
                 </div>
             </div>
         </div>
