@@ -1,9 +1,14 @@
 <?php  
     session_start(); // Memulai sesion
-    if(@$_SESSION['id'] == ''){
-        header('location:handling.php');
+    if($_COOKIE['username'] != '' AND $_COOKIE['password'] != '' AND $_COOKIE['email'] != ''){
+        $_SESSION['username'] = $_COOKIE['username'];
+        $_SESSION['email'] = $_COOKIE['email'];
+        $_SESSION['password'] = $_COOKIE['password'];
     }
 
+    if($_SESSION['login'] == '' AND $_SESSION['nama'] == ''){
+        header('location: login.php');
+    }
 ?>
 
 
@@ -27,6 +32,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Boostrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -239,6 +247,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#logout-modal">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Logout
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -305,6 +323,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </aside>
     <!-- /.control-sidebar -->
 
+    <!-- Modal-start -->
+    <div class="modal fade" id="logout-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Information</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Kamu Yakin Ingin Logout ?</p>
+                    <p>Semua Sesi Akan di hapus Ketika Kamu logout</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="logout.php" type="button" class="btn btn-primary">Understood</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal-end -->
+
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- To the right -->
@@ -322,9 +362,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+    <!-- Boostrao 5 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

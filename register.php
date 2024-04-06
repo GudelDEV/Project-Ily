@@ -69,9 +69,9 @@
 
                             <!-- Checkbox -->
                             <div class="form-check d-flex justify-content-center mb-4">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33"
+                                <input class="form-check-input me-2" type="checkbox" value="aggre" id="checked"
                                     checked />
-                                <label class="form-check-label" for="form2Example33">
+                                <label class="form-check-label" for="checked">
                                     Setuju Dengan Aplikasi Kami
                                 </label>
                             </div>
@@ -137,30 +137,29 @@
             <!-- Right -->
         </div>
     </footer>
-    <?php  
-        // Mengecek apakah form daftar ada isinya apa nggak 
-        if(isset($_POST['password']) && isset($_POST['email']) && isset($_POST['email'])){
-            // Menyimpan inputan user ke dalam variable 
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $username = $_POST['username'];
-
-            // mennyimpan nilai varible ke dalam session seperti sesion storage pada javascript
-            $_SESSION['email'] = $email;
-            $_SESSION['password'] = $password;             
-            $_SESSION['username'] = $username;
-            
-            require 'login.php'; // Memuat file login.php
-        }
-    ?>
-
-
     <!-- Boostrap CDN JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js">
     </script>
-
 </body>
 
 </html>
+
+<?php  
+    // Mengecek apakah form daftar ada isinya atau tidak 
+    if(isset($_POST['password']) && isset($_POST['email']) && isset($_POST['username'])){
+        // Menyimpan inputan user ke dalam variabel 
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Menyimpan nilai variabel ke dalam sesi
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;             
+        $_SESSION['username'] = $username;
+
+        // require 'login.php'; // Memuat Login php
+    }
+    var_dump($_SESSION);
+?>
